@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
+import DataCalendar, { ViewToggle } from '@/components/DataCalendar';
 
 const TIMES = ['morning', 'midday', 'evening', 'night'];
 const ZONES = ['frontal', 'vertex', 'part', 'temples', 'global'];
@@ -18,6 +19,7 @@ export default function InterventionsPage() {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const [filterProduct, setFilterProduct] = useState('all');
+  const [view, setView] = useState('list');
 
   const [date, setDate] = useState(today());
   const [productId, setProductId] = useState('');
@@ -95,13 +97,17 @@ export default function InterventionsPage() {
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 26, flexWrap: 'wrap', gap: 10 }}>
         <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625' }}>History</div>
-        <select value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} style={{ ...inp, padding: '7px 10px', fontSize: 13 }}>
-          <option value="all">All products & actions</option>
-          {products.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
-        </select>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <select value={filterProduct} onChange={(e) => setFilterProduct(e.target.value)} style={{ ...inp, padding: '7px 10px', fontSize: 13 }}>
+            <option value="all">All products & actions</option>
+            {products.map((p) => <option key={p.id} value={p.id}>{p.name}</option>)}
+          </select>
+          <ViewToggle view={view} setView={setView} />
+        </div>
       </div>
 
-      {loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
+      {view === 'calendar' ? (<DataCalendar rows={filtered} dateField="log_date" color="#7c5cff" label="Interventions" renderDay={(rs) => rs.map((i, idx) => <div key={idx} style={{ fontSize: 13, color: '#4a4453' }}>{i.product_id ? (productMap[i.product_id]?.name || 'Product') : 'Action'}{i.time_of_day ? ` (${i.time_of_day})` : ''}{i.zone ? ` · ${i.zone}` : ''}{i.notes ? ` — ${i.notes}` : ''}</div>)} />)
+      : loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
       : byDay.length === 0 ? (<div className="card" style={{ padding: 24, marginTop: 12, textAlign: 'center', color: '#a59fae', fontSize: 14 }}>No interventions logged yet.</div>)
       : (
         <div style={{ marginTop: 14 }}>
