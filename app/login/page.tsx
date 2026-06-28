@@ -21,7 +21,7 @@ export default function LoginPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', padding: 24, background: '#faf7f5' }}>
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="card" style={{ width: '100%', maxWidth: 380, padding: 32 }}>
-        <div className="display" style={{ fontSize: 30, fontWeight: 600, color: '#211b2e', letterSpacing: '-0.01em' }}>Brunair<span style={{ color: '#7c5cff' }}>.</span></div>
+        <div className="display" style={{ fontSize: 30, fontWeight: 600, color: '#211b2e', letterSpacing: '-0.01em' }}>BrunHair<span style={{ color: '#7c5cff' }}>.</span></div>
         <div style={{ fontSize: 14, color: '#8a8390', marginTop: 4, marginBottom: 24 }}>Your personal hair lab. Sign in to continue.</div>
         <label style={{ fontSize: 13, color: '#6b6573' }}>Email</label>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleSubmit()} style={inp} placeholder="you@email.com" />
