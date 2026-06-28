@@ -6,6 +6,7 @@ import { useAuth } from '@/components/AuthProvider';
 import HomeStats from '@/components/HomeStats';
 import TodayPanel from '@/components/TodayPanel';
 import MergedCalendar from '@/components/MergedCalendar';
+import HomeTrends from '@/components/HomeTrends';
 
 const MODULES = [
   { href: '/calendar', icon: '📅', title: 'Calendar', desc: 'Everything on one timeline', ready: true },
@@ -41,6 +42,9 @@ export default function Home() {
         <Link href="/calendar" style={{ fontSize: 13, fontWeight: 600, color: '#7c5cff' }}>Open calendar →</Link>
       </div>
       <div style={{ marginTop: 12 }}><MergedCalendar userId={userId} compact /></div>
+
+      <div style={{ fontSize: 15, fontWeight: 700, color: '#211b2e', marginTop: 30 }}>Trends</div>
+      <HomeTrends userId={userId} />
 
       <div style={{ fontSize: 15, fontWeight: 700, color: '#211b2e', marginTop: 32 }}>Explore</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14, marginTop: 12 }}>
