@@ -13,8 +13,10 @@ const NAV = [
   { href: '/cycle', label: 'Cycle', ready: true },
   { href: '/blood', label: 'Blood Panels', ready: true },
   { href: '/photos', label: 'Photos', ready: true },
-  { href: '/nutrition', label: 'Nutrition', ready: false },
-  { href: '/biometrics', label: 'Biometrics', ready: false },
+  { href: '/nutrition', label: 'Nutrition', ready: true },
+  { href: '/biometrics', label: 'Biometrics', ready: true },
+  { href: '/events', label: 'Events', ready: true },
+  { href: '/shedding', label: 'Shedding', ready: true },
   { href: '/library', label: 'Library', ready: false },
   { href: '/lab', label: 'AL Analyst', ready: false },
 ];
