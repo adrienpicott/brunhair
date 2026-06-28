@@ -50,7 +50,7 @@ export default function Header() {
     <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderBottom: '1px solid #ece6e1' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px' }}>
         <Link href="/" className="display" style={{ fontWeight: 600, fontSize: 21, color: '#211b2e', letterSpacing: '-0.01em' }}>
-          Brunair<span style={{ color: '#7c5cff' }}>.</span> <span className="display" style={{ fontWeight: 400, fontSize: 13.5, color: '#a59fae', fontStyle: 'italic' }}>hair lab</span>
+          BrunHair<span style={{ color: '#7c5cff' }}>.</span> <span className="display" style={{ fontWeight: 400, fontSize: 13.5, color: '#a59fae', fontStyle: 'italic' }}>hair lab</span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span className="hidden sm:inline" style={{ fontSize: 13, color: '#8a8390' }}>{email}</span>
