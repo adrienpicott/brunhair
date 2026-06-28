@@ -1,0 +1,22 @@
+export type EvidenceLevel = 'strong' | 'moderate' | 'limited' | 'marketing' | 'unknown';
+export interface Active { id: string; name: string; slug: string; category?: string | null; evidence_level?: EvidenceLevel; mechanism?: string | null; notes?: string | null; created_at: string; updated_at: string; }
+export interface KnowledgeArticle { id: string; title: string; slug: string; category?: string | null; body?: string | null; source_url?: string | null; evidence_level?: EvidenceLevel; tags?: string[] | null; created_at: string; updated_at: string; }
+export interface Product { id: string; user_id: string; name: string; brand?: string | null; category?: string | null; form?: string | null; in_use: boolean; notes?: string | null; created_at: string; updated_at: string; }
+export interface ProductActive { id: string; product_id: string; active_id: string; concentration?: number | null; unit?: string | null; created_at: string; }
+export interface ShoppingItem { id: string; user_id: string; name: string; vendor?: string | null; price?: number | null; currency?: string | null; url?: string | null; category?: string | null; notes?: string | null; created_at: string; updated_at: string; }
+export interface Intervention { id: string; user_id: string; product_id?: string | null; log_date: string; time_of_day?: string | null; zone?: string | null; amount?: string | null; notes?: string | null; created_at: string; }
+export interface Routine { id: string; user_id: string; name: string; frequency?: string | null; in_use: boolean; notes?: string | null; created_at: string; updated_at: string; }
+export interface RoutineStep { id: string; routine_id: string; ordre: number; product_id?: string | null; instruction?: string | null; created_at: string; }
+export interface RoutineLog { id: string; user_id: string; routine_id?: string | null; log_date: string; completed: boolean; notes?: string | null; created_at: string; }
+export interface CycleEvent { id: string; user_id: string; log_date: string; type: string; flow?: string | null; symptoms?: string[] | null; notes?: string | null; created_at: string; }
+export interface Supplement { id: string; user_id: string; name: string; type?: string | null; dose?: string | null; start_date?: string | null; end_date?: string | null; in_use: boolean; notes?: string | null; created_at: string; updated_at: string; }
+export interface NutritionLog { id: string; user_id: string; log_date: string; calories?: number | null; protein_g?: number | null; iron_mg?: number | null; zinc_mg?: number | null; vit_d_iu?: number | null; omega3_mg?: number | null; biotin_ug?: number | null; screenshot_path?: string | null; notes?: string | null; created_at: string; }
+export interface Biometric { id: string; user_id: string; log_date: string; sleep_hours?: number | null; sleep_quality?: number | null; resting_hr?: number | null; hrv?: number | null; stress_level?: number | null; steps?: number | null; screenshot_path?: string | null; notes?: string | null; created_at: string; }
+export interface LifeEvent { id: string; user_id: string; log_date: string; category?: string | null; description?: string | null; severity?: number | null; notes?: string | null; created_at: string; }
+export interface SheddingCount { id: string; user_id: string; log_date: string; method?: string | null; count?: number | null; notes?: string | null; created_at: string; }
+export interface ScalpState { id: string; user_id: string; log_date: string; oiliness?: number | null; itch?: number | null; dandruff?: number | null; redness?: number | null; notes?: string | null; created_at: string; }
+export interface Photo { id: string; user_id: string; log_date: string; zone?: string | null; storage_path: string; conditions?: Record<string, unknown> | null; notes?: string | null; created_at: string; }
+export interface BloodPanel { id: string; user_id: string; panel_date: string; lab_name?: string | null; report_path?: string | null; notes?: string | null; created_at: string; }
+export interface BloodMarker { id: string; panel_id: string; marker: string; value?: number | null; unit?: string | null; ref_low?: number | null; ref_high?: number | null; flag?: string | null; created_at: string; }
+export interface Analysis { id: string; user_id: string; type?: string | null; input_summary?: string | null; output?: string | null; model?: string | null; created_at: string; }
+export interface Conclusion { id: string; user_id: string; version: number; content?: string | null; updated_at: string; created_at: string; }
