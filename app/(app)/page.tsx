@@ -9,8 +9,10 @@ const MODULES = [
   { href: '/cycle', icon: '🌙', title: 'Cycle', desc: 'Period & hormonal markers', ready: true },
   { href: '/blood', icon: '🩸', title: 'Blood Panels', desc: 'Ferritin, thyroid, hormones…', ready: true },
   { href: '/photos', icon: '📸', title: 'Photos', desc: 'Constant-condition tracking', ready: true },
-  { href: '/nutrition', icon: '🥗', title: 'Nutrition', desc: 'Key hair nutrients (from MFP)', ready: false },
-  { href: '/biometrics', icon: '⌚', title: 'Biometrics', desc: 'Sleep, stress, HR', ready: false },
+  { href: '/nutrition', icon: '🥗', title: 'Nutrition', desc: 'Key hair nutrients (from MFP)', ready: true },
+  { href: '/biometrics', icon: '⌚', title: 'Biometrics', desc: 'Sleep, stress, HR', ready: true },
+  { href: '/events', icon: '⚡', title: 'Events', desc: 'Triggers (illness, stress, diet…)', ready: true },
+  { href: '/shedding', icon: '🧮', title: 'Shedding count', desc: 'Quantified daily shedding', ready: true },
   { href: '/library', icon: '📚', title: 'Science Library', desc: 'Evidence & what actually works', ready: false },
   { href: '/lab', icon: '🔬', title: 'AL Analyst', desc: 'Your data analyst (later)', ready: false },
 ];
