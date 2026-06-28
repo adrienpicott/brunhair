@@ -8,8 +8,8 @@ import { useAuth } from './AuthProvider';
 const NAV = [
   { href: '/', label: 'Home', ready: true },
   { href: '/products', label: 'Products', ready: true },
-  { href: '/interventions', label: 'Interventions', ready: false },
-  { href: '/routines', label: 'Routines', ready: false },
+  { href: '/interventions', label: 'Interventions', ready: true },
+  { href: '/routines', label: 'Routines', ready: true },
   { href: '/cycle', label: 'Cycle', ready: false },
   { href: '/blood', label: 'Blood Panels', ready: false },
   { href: '/photos', label: 'Photos', ready: false },
