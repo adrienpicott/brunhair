@@ -20,8 +20,9 @@ export default function Home() {
   return (
     <div>
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <div style={{ fontSize: 24, fontWeight: 700, color: '#1a1625' }}>Welcome to your hair lab</div>
-        <div style={{ fontSize: 14, color: '#8a8390', marginTop: 6, maxWidth: 560 }}>Log what you do, capture the conditions, and let the data reveal what actually moves the needle. This is a tracking tool — not a medical diagnosis.</div>
+        <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b6a7d6' }}>Personal hair lab</div>
+        <div className="display" style={{ fontSize: 34, fontWeight: 600, color: '#211b2e', marginTop: 6, letterSpacing: '-0.02em', lineHeight: 1.1 }}>Welcome back.</div>
+        <div style={{ fontSize: 14.5, color: '#8a8390', marginTop: 8, maxWidth: 540, lineHeight: 1.5 }}>Log what you do, capture the conditions, and let the data show what actually moves the needle — calmly, one day at a time.</div>
       </motion.div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: 16, marginTop: 28 }}>
         {MODULES.map((m, i) => {
@@ -29,9 +30,10 @@ export default function Home() {
             <motion.div className="card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.04 }}
               style={{ padding: 18, position: 'relative', height: '100%', cursor: m.ready ? 'pointer' : 'default' }}>
               <div style={{ fontSize: 26 }}>{m.icon}</div>
-              <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625', marginTop: 8 }}>{m.title}</div>
+              <div style={{ fontSize: 15, fontWeight: 650, color: '#211b2e', marginTop: 8 }}>{m.title}</div>
               <div style={{ fontSize: 12.5, color: '#8a8390', marginTop: 3, lineHeight: 1.45 }}>{m.desc}</div>
               {!m.ready && (<span style={{ position: 'absolute', top: 14, right: 14, fontSize: 10.5, fontWeight: 600, color: '#7c5cff', background: '#f1ecff', padding: '3px 8px', borderRadius: 20 }}>SOON</span>)}
+              {m.ready && (<span style={{ position: 'absolute', bottom: 13, right: 16, fontSize: 16, color: '#7c5cff' }}>→</span>)}
             </motion.div>
           );
           return m.ready
