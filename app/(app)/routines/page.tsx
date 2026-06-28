@@ -5,8 +5,11 @@ import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
 import TodayAdherence from '@/components/TodayAdherence';
+import Heatmap from '@/components/Heatmap';
 
 const FREQS = ['daily', 'every 2 days', '2x / week', 'weekly', 'as needed'];
+const dkey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const dayAgo = (n) => dkey(new Date(Date.now() - n * 86400000));
 
 export default function RoutinesPage() {
   const { userId } = useAuth();
@@ -16,6 +19,7 @@ export default function RoutinesPage() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const [adh, setAdh] = useState<Set<string>>(new Set());
 
   const [name, setName] = useState('');
   const [frequency, setFrequency] = useState('daily');
@@ -28,12 +32,14 @@ export default function RoutinesPage() {
   async function load() {
     if (!userId) return;
     setLoading(true);
-    const [rt, st, pr] = await Promise.all([
+    const [rt, st, pr, rlog] = await Promise.all([
       supabase.from('routines').select('*').order('created_at', { ascending: false }),
       supabase.from('routine_steps').select('*').order('ordre'),
       supabase.from('products').select('id,name').order('name'),
+      supabase.from('routine_logs').select('log_date,completed').gte('log_date', dayAgo(28)),
     ]);
     setRoutines(rt.data || []); setSteps(st.data || []); setProducts(pr.data || []);
+    setAdh(new Set((rlog.data || []).filter((l) => l.completed).map((l) => l.log_date)));
     setLoading(false);
   }
   useEffect(() => { load(); }, [userId]);
@@ -93,6 +99,14 @@ export default function RoutinesPage() {
       </div>
 
       <TodayAdherence routines={routines.filter((r) => r.in_use)} userId={userId} />
+
+      {adh.size > 0 && (
+        <div className="card" style={{ padding: 16, marginTop: 14 }}>
+          <div style={{ fontSize: 12.5, fontWeight: 600, color: '#a59fae', textTransform: 'uppercase', letterSpacing: 0.3, marginBottom: 10 }}>Adherence — last 28 days</div>
+          <Heatmap activeDays={adh} count={28} color="#3fb39a" />
+          <div style={{ fontSize: 11.5, color: '#a59fae', marginTop: 8 }}>Each square is a day — green when you completed a routine.</div>
+        </div>
+      )}
 
       <div style={{ fontSize: 15, fontWeight: 650, color: '#1a1625', marginTop: 26 }}>My routines</div>
       {loading ? (<div style={{ color: '#a59fae', fontSize: 14, marginTop: 16 }}>Loading…</div>)
