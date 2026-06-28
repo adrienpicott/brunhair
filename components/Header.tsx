@@ -18,7 +18,7 @@ const NAV = [
   { href: '/events', label: 'Events', ready: true },
   { href: '/shedding', label: 'Shedding', ready: true },
   { href: '/library', label: 'Library', ready: false },
-  { href: '/lab', label: 'AL Analyst', ready: false },
+  { href: '/lab', label: 'AL Analyst', ready: true },
 ];
 
 export default function Header() {
