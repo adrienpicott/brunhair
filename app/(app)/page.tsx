@@ -14,7 +14,7 @@ const MODULES = [
   { href: '/events', icon: '⚡', title: 'Events', desc: 'Triggers (illness, stress, diet…)', ready: true },
   { href: '/shedding', icon: '🧮', title: 'Shedding count', desc: 'Quantified daily shedding', ready: true },
   { href: '/library', icon: '📚', title: 'Science Library', desc: 'Evidence & what actually works', ready: false },
-  { href: '/lab', icon: '🔬', title: 'AL Analyst', desc: 'Your data analyst (later)', ready: false },
+  { href: '/lab', icon: '🔬', title: 'AL Analyst', desc: 'Compile your data dossier', ready: true },
 ];
 export default function Home() {
   return (
