@@ -12,7 +12,7 @@ const NAV = [
   { href: '/routines', label: 'Routines', ready: true },
   { href: '/cycle', label: 'Cycle', ready: true },
   { href: '/blood', label: 'Blood Panels', ready: true },
-  { href: '/photos', label: 'Photos', ready: false },
+  { href: '/photos', label: 'Photos', ready: true },
   { href: '/nutrition', label: 'Nutrition', ready: false },
   { href: '/biometrics', label: 'Biometrics', ready: false },
   { href: '/library', label: 'Library', ready: false },
